@@ -6,7 +6,7 @@ import './style.scss'
 
 const MotoSlider = ({motos}) => {
     const navigate = useNavigate();
-    const [slide, setSlide] = React.useState(localStorage.getItem('moto') || 0)
+    const [slide, setSlide] = React.useState(localStorage.getItem('mot') ? JSON.parse(localStorage.getItem('mot')).id : 0)
     return (
         <section className='moto-section'>
             <div className="moto _container">
@@ -18,7 +18,7 @@ const MotoSlider = ({motos}) => {
                     <Slider index={slide} dataArr={motos} setFunc={setSlide} first={'https://avtoshkola177.ru/wp-content/uploads/2020/10/moto1.jpg'} />
                 </div>
                 <div onClick={()=>{
-                    localStorage.setItem('moto', slide)
+                    localStorage.setItem('mot', JSON.stringify({...motos[slide], id: slide}))
                     navigate('/results')
                     }} className={slide == 0 ? "button-accept" : "button-accept button-accept-active"}>
                     Подтвердить

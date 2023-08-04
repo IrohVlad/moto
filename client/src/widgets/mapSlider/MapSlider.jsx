@@ -6,7 +6,7 @@ import Texts from '../../features/texts/Texts';
 
 const MapSlider = ({maps}) => {
     const navigate = useNavigate();
-    const [slide, setSlide] = React.useState(localStorage.getItem('map') || 0)
+    const [slide, setSlide] = React.useState(localStorage.getItem('track') ? JSON.parse(localStorage.getItem('track')).id : 0)
     // React.useEffect(()=>{
     //     if(localStorage.getItem('map')){
     //         setSlide(localStorage.getItem('map'))
@@ -26,7 +26,7 @@ const MapSlider = ({maps}) => {
                     
                 </div>
                 <div onClick={()=>{
-                    localStorage.setItem('map', slide)
+                    localStorage.setItem('track', JSON.stringify({...maps[slide], id: slide}))
                     navigate('/moto')
                     }} className={slide == 0 ? "button-accept" : "button-accept button-accept-active"}>
                     Подтвердить

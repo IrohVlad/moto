@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {store} from '../pages/authPage/store/store'
+import { Provider } from 'react-redux';
 import Router from './Router';
 import './index.scss';
 import "swiper/css";
@@ -10,12 +12,13 @@ import "swiper/css/pagination";
 function App() {
     return (
         <>
-            <BrowserRouter>
-                
-                <Routes>
-                    <Route path={'/*'} element={<Router/>}/>
-                </Routes>
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path={'/*'} element={<Router/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </Provider>
         </>
     );
 };

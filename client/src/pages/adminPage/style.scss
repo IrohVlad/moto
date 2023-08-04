@@ -1,0 +1,58 @@
+.admin-section{
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #200157 0%, #0e0123 15%);
+    .admin{
+        position: relative;
+        .nav{
+            position: relative;
+            z-index: 10;
+            svg{
+                cursor: pointer;
+                transform: rotate(180deg);
+                height: 80px;
+                width: 100px;
+                color: rgb(219, 219, 219);
+                transition-property: color, transform;
+                transition-duration: 0.3s, 0.3s;
+                &:hover{
+                    color: white;
+                    transform: rotate(180deg) scale(1.1);
+                }
+            }
+        }
+        .content{
+            height: fit-content;
+            .book{
+                border: 3px solid white;
+                color: white;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                &:not(:last-child){
+                    margin-bottom: 10px;
+                }
+                .book__date{
+
+                }
+                .book__contacts{
+                    li:not(:last-child){
+                        margin-bottom: 7px;
+                    }
+                }
+                .book__info{
+                    li:not(:last-child){
+                        margin-bottom: 7px;
+                    }
+                }
+            }
+
+        }
+            
+
+    }
+        
+    
+}

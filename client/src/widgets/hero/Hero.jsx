@@ -9,11 +9,20 @@ import layer5 from './assets/layer05.png';
 const Hero = () => {
     const navigate = useNavigate();
     const hero = React.useRef()
-    window.addEventListener('mousemove', e => {
-        if(hero.current){
-            hero.current.style = `--movex: ${(e.clientX - window.innerWidth/2) * -.007}deg; --movey: ${(e.clientY - window.innerHeight/2) * .007}deg; `
-        }
-    })
+    const [mobile, setMobile] = React.useState(false);
+    React.useEffect(()=>{
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+
+            setMobile(true);
+        
+            } else{
+                window.addEventListener('mousemove', e => {
+                    if(hero.current){
+                        hero.current.style = `--movex: ${(e.clientX - window.innerWidth/2) * -.007}deg; --movey: ${(e.clientY - window.innerHeight/2) * .007}deg; `
+                    }
+                })
+            }
+    }, [])
     return (
         <section className='hero-section'>
             <div ref={hero} className="hero">
